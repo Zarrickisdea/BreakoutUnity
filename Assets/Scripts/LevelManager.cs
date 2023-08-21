@@ -141,6 +141,7 @@ public class LevelManager : MonoBehaviour
             if (tries == 0)
             {
                 SceneManager.LoadScene("GameOverScene");
+                AudioManager.Instance.PlayBGM(AudioManager.BackgroundSound.Over);
                 scoreText.transform.parent.gameObject.SetActive(false);
                 triesText.transform.parent.gameObject.SetActive(false);
                 finalText.gameObject.SetActive(true);

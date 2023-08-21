@@ -4,6 +4,14 @@ using UnityEngine.SceneManagement;
 public class ButtonHandler : MonoBehaviour
 {
     [SerializeField] private GameObject helpObject;
+
+    private void Start()
+    {
+        if (helpObject != null)
+        {
+            AudioManager.Instance.PlayBGM(AudioManager.BackgroundSound.Menu);
+        }
+    }
     public void PlayButton()
     {
         if (LevelManager.Instance != null)
@@ -14,6 +22,7 @@ public class ButtonHandler : MonoBehaviour
         {
             Destroy(BrickManager.Instance.gameObject);
         }
+        AudioManager.Instance.StopMusic();
         SceneManager.LoadScene("MainScene");
     }
 
@@ -25,6 +34,7 @@ public class ButtonHandler : MonoBehaviour
     public void MainMenuButton()
     {
         LevelManager.Instance.FinalText.gameObject.SetActive(false);
+        AudioManager.Instance.PlayBGM(AudioManager.BackgroundSound.Menu);
         SceneManager.LoadScene("MenuScene");
     }
 
@@ -38,5 +48,10 @@ public class ButtonHandler : MonoBehaviour
         {
             helpObject.SetActive(false);
         }
+    }
+
+    public void SoundEffect()
+    {
+        AudioManager.Instance.PlayEffect(AudioManager.Effects.Button);
     }
 }

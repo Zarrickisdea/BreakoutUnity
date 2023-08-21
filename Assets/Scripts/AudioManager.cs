@@ -18,15 +18,12 @@ public class AudioManager : MonoBehaviour
 
     public enum BackgroundSound
     {
-        None,
         Menu,
-        Gameplay,
         Over
     }
 
     public enum Effects
     {
-        None,
         Hit,
         Bounce,
         Button

@@ -49,10 +49,12 @@ public class Ball : MonoBehaviour
                 LevelManager.Instance.RemoveBall(this);
                 LevelManager.Instance.CheckReturnedBalls();
             }
+            AudioManager.Instance.PlayEffect(AudioManager.Effects.Bounce);
         }
 
         else if (collision.gameObject.CompareTag("Brick"))
         {
+            AudioManager.Instance.PlayOtherEffect(AudioManager.Effects.Hit);
             Brick brick = collision.gameObject.GetComponent<Brick>();
             LevelManager.Instance.AddScore(200 * brick.ColorIndex);
             brick.ColorIndex--;
