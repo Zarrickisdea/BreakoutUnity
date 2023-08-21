@@ -10,28 +10,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI triesText;
     [SerializeField] private TextMeshProUGUI finalText;
+    [SerializeField] private TextMeshProUGUI instructionsText;
     private List<Ball> balls = new List<Ball>();
     private int score = 0;
     private int currentLevelBalls;
     private int ballsReturned = 0;
     private int levelIndex = 1;
     private int tries = 3;
-
-    public TextMeshProUGUI ScoreText
-    {
-        get
-        {
-            return scoreText;
-        }
-    }
-
-    public TextMeshProUGUI TriesText
-    {
-        get
-        {
-            return triesText;
-        }
-    }
 
     public TextMeshProUGUI FinalText
     {
@@ -61,14 +46,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public int CurrentLevelBalls
-    {
-        get
-        {
-            return currentLevelBalls;
-        }
-    }
-
     public int BallsReturned
     {
         get
@@ -78,14 +55,6 @@ public class LevelManager : MonoBehaviour
         set
         {
             ballsReturned = value;
-        }
-    }
-
-    public int ActiveBalls
-    {
-        get
-        {
-            return balls.Count;
         }
     }
 
@@ -144,6 +113,7 @@ public class LevelManager : MonoBehaviour
                 AudioManager.Instance.PlayBGM(AudioManager.BackgroundSound.Over);
                 scoreText.transform.parent.gameObject.SetActive(false);
                 triesText.transform.parent.gameObject.SetActive(false);
+                instructionsText.gameObject.SetActive(false);
                 finalText.gameObject.SetActive(true);
                 finalText.text = "Final Score: " + score.ToString();
             }
